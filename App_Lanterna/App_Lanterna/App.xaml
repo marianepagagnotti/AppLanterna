@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Lanterna.App">
+    <Application.Resources>
+        <!--
+            Como estamos definindo o dicionário no App.xaml esses estilos estarão disponíveis em toda
+            a aplicação, ou seja, se tivessemos 100 telas no app esses estilos estariam disponíveis
+            para todas elas, não sendo nescessário reescrever todas as vezes.
+        -->
+
+        <ResourceDictionary>
+
+            <!--
+                Aqui estamos definindo que um estilo terá uma fonte personalizada. Você já deve ter copiado
+                a fonte para o diretório Assests do projeto Androind, agora vamos usar a definição Setter para 
+                definir a propriedade FontFamily, que poderá variar de acordo com a plataforma. Isso quer dizer
+                que, podemos ter uma fonte no Androind e uma diferente no IOS
+            -->
+
+            <Style x:Key="fonteCustomizada" TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String"
+                                    Android="MusticaPro-SemiBold.otf#MusticaPro-SemiBold" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <!--
+                Aqui estamos definindo o estilo que é baseado na fonte personalizada de fato 
+                estamos fazendo herança de estilos. Veja no atributo BaseResourceKey estamos apontando
+                para o Style que criamos a fonte personalizada
+            -->
+
+            <Style x:Key="titulo" TargetType="Label" BaseResourceKey="fonteCustomizada">
+                <Setter Property="FontSize" Value="60"/>
+            </Style>
+
+            <Style x:Key="subTitulo" TargetType="Label" BaseResourceKey="fonteCustomizada">
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
+
+            <Style x:Key="texto" TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="textoCinza" TargetType="Label" BaseResourceKey="texto">
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+
+            <Style x:Key="textoBranco" TargetType="Label" BaseResourceKey="texto">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
